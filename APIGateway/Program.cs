@@ -20,7 +20,12 @@ namespace APIGateway
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                     webBuilder.UseStartup<Startup>();
-                });
+                    webBuilder.ConfigureAppConfiguration(config =>
+                    //config.AddJsonFile($"configuration.{env}.json"));
+                    config.AddJsonFile($"configuration.json"));
+    })
+                .ConfigureLogging(logging=>logging.AddConsole())/*to add logs on console*/;
     }
 }
