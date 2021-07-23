@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace ProductsAPIServices.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
+        [Authorize]
         [HttpGet]
         public IEnumerable<string> Get()
         {

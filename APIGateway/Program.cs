@@ -24,7 +24,7 @@ namespace APIGateway
                     webBuilder.UseStartup<Startup>();
                     webBuilder.ConfigureAppConfiguration(config =>
                     //config.AddJsonFile($"configuration.{env}.json"));
-                    config.AddJsonFile($"configuration.json"));
+                    config.AddJsonFile($"configuration.json", optional: false, reloadOnChange: true));
     })
                 .ConfigureLogging(logging=>logging.AddConsole())/*to add logs on console*/;
     }

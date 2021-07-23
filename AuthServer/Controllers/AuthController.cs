@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -19,6 +20,7 @@ namespace AuthServer.Controllers
         {
             this._settings = settings;
         }
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Get(string name, string pwd)
         {

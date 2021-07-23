@@ -19,6 +19,10 @@
         "Period": "50s",
         "PeriodTimespan": 1,
         "Limit": 1
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
       }
     },
     {
@@ -40,6 +44,10 @@
         "Period": "50s",
         "PeriodTimespan": 1,
         "Limit": 1
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
       }
     },
     {
@@ -61,11 +69,44 @@
         "Period": "5s",
         "PeriodTimespan": 1,
         "Limit": 1
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/auth?name={name}&pwd={pwd}",
+      "DownstreamScheme": "http",
+      /*"DownstreamPort": 9002,
+      "DownstreamHost": "localhost",*/
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9009
+        }
+      ],
+      "UpstreamPathTemplate": "/auth?name={name}&pwd={pwd}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
       }
     }
   ],
   "GlobalConfiguration": {
     "RequestIdKey": "OcRequestId",
-    "AdministrationPath": "/administration"
+    "AdministrationPath": "/administration",
+    "RateLimitOptions": {
+      "DisableRateLimitHeaders": false,
+      "QuotaExceededMessage": "Traffice is too heavy, please try later"
+    }
   }
 }  
